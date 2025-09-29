@@ -12,12 +12,12 @@ hideBackToTop: true
 hidePagination: true
 ---
 
-Hexagonal architecture is a pattern of building and designing software, which aims to have applications as loosely coupled as possible.
-While one might argue about whether it is a bit over-kill or not, I have personally had some quite experiences when building larger projects with it using OOP languages.
+Hexagonal architecture is a pattern that aims to keep applications as loosely coupled as possible.
+While some might argue that it can be overkill for smaller projects, I’ve personally had good experiences when building larger projects with it in OOP languages.
 
-While my interpretation might differ a bit from other resources you might find online, it generally still attempts to follow the basic principles of hexagonal architecture.
+My interpretation may differ slightly from other resources, but it generally follows the basic principles of hexagonal architecture.
 
-The following below is a folder structure diagram, which displays how I usually go by when building applications with hexagonal design in mind.
+Below is a folder structure diagram that illustrates how I typically organize applications with this design in mind:
 
 ```sh
 .
@@ -47,20 +47,24 @@ The following below is a folder structure diagram, which displays how I usually 
 
 ### Adapter layer
 
-The adapter layer consists of outgoing and incoming logic. Incoming being the api controllers, MQ consumers, etc. Outgoing being http requests against arbitrary 3rd party API's, db integration, MQ producers, etc.
+The adapter layer consists of both incoming and outgoing logic:
+* Incoming adapters include API controllers, MQ consumers, etc
+* Outgoing adapters include database integrations, MQ producers, or HTTP clients for external APIs
 
-The adapter layer tend to have a port, from the domain layer, that they implement. The ports will be used in usecases, which we will get to later.
-Adapter modules also contain any necessary configuration for setting up any adapter instance, e.g the db adapter would also contain configuration containing db name, password, etc.
+The adapter layer typically implements ports defined in the domain layer. These ports are then used in the use cases.
+Adapter modules also include any necessary configuration for initializing their dependencies, e.g, the database adapter includes connection settings such as database name, user, and password.
 
 ### Domain layer
 
-Domain layer consists of 3 major parts, firstly models, which you can think of as simple POJOs. Secondly the ports, which are the interfaces implemented by adapter layer. Lastly, usecases, this is where the core business logic is actually implemented.
+Domain layer consists of 3 three main parts:
+* Models - usually simple POJOs (or equivalent) that represent domain objects
+* Ports - interfaces that are implemented by the adapter layer
+* Use cases - the application's core business logic
 
-Domain layer should always strive to exclude external dependencies, a good tool for that is [ArchUnit](https://www.archunit.org/) where you can setup tests to validate your Java applications architecture.
+Domain layer should always aim to be independent of external dependencies. Tools like [ArchUnit](https://www.archunit.org/) can help enforce this in Java projects, so you can setup tests to validate your Java applications architecture.
 
-Usecases are able to hit the db, send requests, produce messages, via the ports in the port package.
+Use cases access external systems (e.g., databases, APIs, or message queues) exclusively through the ports defined in the domain layer.
 
 ### Infrastructure layer
 
-The infrastructure layer is where I usually put anything that does not really fit into core application logic. E.g could be cronjobs, metrics and other nice to haves.
-These are essential for the application, but not something I would classify as part of the business logic.
+The infrastructure layer is where I place cross-cutting or operational concerns that don’t directly belong to the business logic. Examples include cron jobs, metrics, or feature flags. These are essential for running the application but are not part of the core domain.
