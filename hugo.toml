@@ -27,7 +27,7 @@ hideHeader = false
 # Intro on main page, content is markdown
 homeIntroTitle = 'Yo 👋'
 homeIntroContent = """
-I'm a software engineer based in Stockholm, working at [Legora](https://legora.com/).
+I'm a software engineer based in Stockholm, working at [Froda](https://froda.se/).
 
 This page is my digital notebook. 
 An attempt to share everything from random thoughts to deep dives into technical topics that interest me,

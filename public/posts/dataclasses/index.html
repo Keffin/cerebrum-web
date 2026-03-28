@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313//favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313//android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//apple-touch-icon.png">
+
+<meta name="description" content="Quality of life improvements using data classes"/>
+
+
+
+<title>
+    
+    Python tricks with MF DOOM | A bit of Kev
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/dataclasses/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/dataclasses/">
+  <meta property="og:site_name" content="A bit of Kev">
+  <meta property="og:title" content="Python tricks with MF DOOM">
+  <meta property="og:description" content="Quality of life improvements using data classes">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-28T00:00:00+00:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Records">
+    <meta property="article:tag" content="Dataclass">
+    <meta property="article:tag" content="MF DOOM">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.32c4505ff6f37c4a072861f2cbad7347d8e8e8c8f60e01107b50d77c8c29f9f6.css" media="all">
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="dark">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">A bit of Kev</a>
+    </h1>
+
+    <div class="flex">
+        
+
+        
+        
+      
+        <p class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/notes" >
+                /notes
+            </a>
+        </p>
+        
+      
+        <p class="small ">
+            <a href="/whoami" >
+                /whoami
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+
+<div class="breadcrumbs">
+    
+    <a href="/">Home</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a href="/posts/">Posts</a>
+    <span class="breadcrumbs-separator"> > </span>
+    
+    <a class="breadcrumbs-current" href="/posts/dataclasses/">Python tricks with MF DOOM</a>
+</div>
+
+
+
+<div >
+
+  <div class="single-intro-container">
+
+    
+
+    <h1 class="single-title">Python tricks with MF DOOM</h1>
+    
+    <p class="single-summary">Data classes featuring MF DOOM.</p>
+    
+
+    
+
+    <p class="single-readtime">
+      
+      
+      
+      <time datetime="2026-03-28T00:00:00&#43;00:00">March 28, 2026</time>
+      
+
+      
+    </p>
+
+  </div>
+
+  
+
+  
+  
+
+  <div class="single-tags">
+    
+    <span>
+      <a href="http://localhost:1313/tags/python/">#Python</a>
+    </span>
+    
+    
+    <span>
+      <a href="http://localhost:1313/tags/records/">#Records</a>
+    </span>
+    
+    
+    <span>
+      <a href="http://localhost:1313/tags/dataclass/">#Dataclass</a>
+    </span>
+    
+    
+    <span>
+      <a href="http://localhost:1313/tags/mf-doom/">#MF DOOM</a>
+    </span>
+    
+    
+  </div>
+
+  
+  
+
+  
+
+  
+
+  
+
+  <div class="single-content">
+    <p>Python is a great language. Simple and fun to read.</p>
+<p>But I can sometimes come across code bases where certain quality of life improvements are missing.
+Coming from a background of mostly writing Java and C# code, I can sometimes like to get inspiration from those languages when writing Python code.</p>
+<p>So here are some features in the language that I personally like to use to improve my Python code.</p>
+<h2 class="heading" id="data-classes">
+  Data classes
+  <a class="anchor" href="#data-classes">#</a>
+</h2>
+<p>As of <a href="https://peps.python.org/pep-0557/">PEP 557</a>, data classes have been a great addition to the standard library.
+I like to compare data classes in Python to records in Java. A clean and simple way to represent and structure data.</p>
+<h3 class="heading" id="frozen-data-classes">
+  Frozen data classes
+  <a class="anchor" href="#frozen-data-classes">#</a>
+</h3>
+<p>The data class library introduces a lot of other nice features as well.
+One I&rsquo;m particularly keen on is emulating immutability, passing <code>Frozen=True</code> to a data class.
+When a data class is frozen, attempts to modify its attributes will raise a FrozenInstanceError.</p>
+<p>The mutable methods in question are <code>__setattr__()</code> and <code>__delattr__()</code> which are added to data classes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>@dataclass(frozen<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">class</span> Doom:
+</span></span><span style="display:flex;"><span>    name: <span style="color:#fabd2f">str</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">def</span> <span style="color:#fabd2f">main</span>() <span style="color:#fe8019">-&gt;</span> <span style="color:#fe8019">None</span>:
+</span></span><span style="display:flex;"><span>    mf <span style="color:#fe8019">=</span> Doom(<span style="color:#b8bb26">&#34;DOOM&#34;</span>)
+</span></span><span style="display:flex;"><span>    mf<span style="color:#fe8019">.</span>name <span style="color:#fe8019">=</span> <span style="color:#b8bb26">&#34;King Geedorah&#34;</span> <span style="color:#928374;font-style:italic"># Bad!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#928374;font-style:italic"># dataclasses.FrozenInstanceError: cannot assign to field &#39;name&#39;</span>
+</span></span></code></pre></div><p>Making it frozen, we prevent any accidental or intentional changes to a class that we don&rsquo;t want to mutate.</p>
+<h3 class="heading" id="frozen-is-not-read-only">
+  Frozen is not read-only
+  <a class="anchor" href="#frozen-is-not-read-only">#</a>
+</h3>
+<p>Frozen data classes are still vulnerable to some extent of mutability. The immutability only applies to the attributes themselves, not the objects they reference.</p>
+<p>The content of mutable objects stored in a data class is still able to be changed. E.g a list attribute. A frozen data class with a list attribute can still be mutated later on.</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>@dataclass(frozen<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">class</span> Doom:
+</span></span><span style="display:flex;"><span>    name: <span style="color:#fabd2f">str</span>
+</span></span><span style="display:flex;"><span>    aliases: <span style="color:#fabd2f">list</span>[<span style="color:#fabd2f">str</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">def</span> <span style="color:#fabd2f">main</span>() <span style="color:#fe8019">-&gt;</span> <span style="color:#fe8019">None</span>:
+</span></span><span style="display:flex;"><span>    mf <span style="color:#fe8019">=</span> Doom(name<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;DOOM&#34;</span>, aliases<span style="color:#fe8019">=</span>[<span style="color:#b8bb26">&#34;King Geedorah&#34;</span>])
+</span></span><span style="display:flex;"><span>    mf<span style="color:#fe8019">.</span>aliases<span style="color:#fe8019">.</span>append(<span style="color:#b8bb26">&#34;Viktor Vaughn&#34;</span>) <span style="color:#928374;font-style:italic"># Completely fine</span>
+</span></span></code></pre></div><p>This doesn’t mutate the data class itself, but rather the list it holds, since lists are mutable.</p>
+<h4 class="heading" id="explicit-data-class-mutation">
+  Explicit data class mutation
+  <a class="anchor" href="#explicit-data-class-mutation">#</a>
+</h4>
+<p>In some cases, such as inside <code>__post_init__</code>, you may still want to modify a frozen data class. This can be done using <code>object.__setattr__()</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>@dataclass(frozen<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">class</span> Doom:
+</span></span><span style="display:flex;"><span>    name: <span style="color:#fabd2f">str</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">def</span> <span style="color:#fabd2f">__post_init__</span>(self):
+</span></span><span style="display:flex;"><span>        all_caps <span style="color:#fe8019">=</span> self<span style="color:#fe8019">.</span>name<span style="color:#fe8019">.</span>upper()
+</span></span><span style="display:flex;"><span>        <span style="color:#fabd2f">object</span><span style="color:#fe8019">.</span>__setattr__(self, <span style="color:#b8bb26">&#34;name&#34;</span>, all_caps)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">def</span> <span style="color:#fabd2f">main</span>() <span style="color:#fe8019">-&gt;</span> <span style="color:#fe8019">None</span>:
+</span></span><span style="display:flex;"><span>    mf <span style="color:#fe8019">=</span> Doom(name<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;doom&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">print</span>(mf) <span style="color:#928374;font-style:italic"># MF(name=&#39;DOOM&#39;)</span>
+</span></span></code></pre></div><h3 class="heading" id="computed-properties">
+  Computed properties
+  <a class="anchor" href="#computed-properties">#</a>
+</h3>
+<p>Python provides a nice way of creating methods that behave like attributes. This is good in larger projects to prevent us from breaking backwards compatibility.
+We can, instead of creating a method call, have something like a regular attribute access without breaking the class objects public API.</p>
+<p>An FYI, this feature is not limited to data classes only.</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@dataclass(frozen<span style="color:#fe8019">=</span><span style="color:#fe8019">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">class</span> Doom:
+</span></span><span style="display:flex;"><span>    name: <span style="color:#fabd2f">str</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    @property
+</span></span><span style="display:flex;"><span>    <span style="color:#fe8019">def</span> <span style="color:#fabd2f">reminder</span>(self) <span style="color:#fe8019">-&gt;</span> <span style="color:#fabd2f">str</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#fe8019">return</span> self<span style="color:#fe8019">.</span>name<span style="color:#fe8019">.</span>upper()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">def</span> <span style="color:#fabd2f">main</span>() <span style="color:#fe8019">-&gt;</span> <span style="color:#fe8019">None</span>:
+</span></span><span style="display:flex;"><span>    mf <span style="color:#fe8019">=</span> Doom(name<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;doom&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">print</span>(mf<span style="color:#fe8019">.</span>reminder) <span style="color:#928374;font-style:italic"># DOOM</span>
+</span></span></code></pre></div><h3 class="heading" id="hiding-output">
+  Hiding output
+  <a class="anchor" href="#hiding-output">#</a>
+</h3>
+<p>In some cases, we want to hide output from a class&rsquo;s <code>repr</code>, in these scenarios, we can use the <code>field(repr=False)</code>.
+This is especially useful when working with e.g. dataframes or arrays that could clutter logs.</p>
+<div class="highlight"><pre tabindex="0" style="color:#ebdbb2;background-color:#282828;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>@dataclass
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">class</span> Doom:
+</span></span><span style="display:flex;"><span>    name: <span style="color:#fabd2f">str</span>
+</span></span><span style="display:flex;"><span>    lyrics: <span style="color:#fabd2f">str</span> <span style="color:#fe8019">=</span> field(<span style="color:#fabd2f">repr</span><span style="color:#fe8019">=</span><span style="color:#fe8019">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#fe8019">def</span> <span style="color:#fabd2f">main</span>() <span style="color:#fe8019">-&gt;</span> <span style="color:#fe8019">None</span>:
+</span></span><span style="display:flex;"><span>    mf <span style="color:#fe8019">=</span> Doom(
+</span></span><span style="display:flex;"><span>        name<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;doom&#34;</span>,
+</span></span><span style="display:flex;"><span>        lyrics<span style="color:#fe8019">=</span><span style="color:#b8bb26">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#b8bb26">                I get no kick from champagne
+</span></span></span><span style="display:flex;"><span><span style="color:#b8bb26">                Mere alcohol doesn&#39;t thrill me at all
+</span></span></span><span style="display:flex;"><span><span style="color:#b8bb26">                So tell me, why shouldn&#39;t it be true?
+</span></span></span><span style="display:flex;"><span><span style="color:#b8bb26">                I get a kick out of brew
+</span></span></span><span style="display:flex;"><span><span style="color:#b8bb26">                &#34;&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#fabd2f">print</span>(mf) <span style="color:#928374;font-style:italic"># Doom(name=&#39;doom&#39;)</span>
+</span></span></code></pre></div>
+    
+  </div>
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  <footer>
+    
+
+
+  </footer>
+
+  
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
+
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+  
+
+</body>
+
+<script>
+
+  function isAuto() {
+    return document.body.classList.contains("auto");
+  }
+
+  function setTheme() {
+    if (!isAuto()) {
+      return
+    }
+
+    document.body.classList.remove("auto");
+    let cls = "light";
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      cls = "dark";
+    }
+
+    document.body.classList.add(cls);
+  }
+
+  function invertBody() {
+    document.body.classList.toggle("dark");
+    document.body.classList.toggle("light");
+  }
+
+  if (isAuto()) {
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(invertBody);
+  }
+
+  setTheme();
+
+</script>
+
+<script defer src="/js/copy-code.js"></script>
+</html>

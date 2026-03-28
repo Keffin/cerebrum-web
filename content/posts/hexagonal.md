@@ -48,8 +48,9 @@ Below is a folder structure diagram that illustrates how I typically organize ap
 ### Adapter layer
 
 The adapter layer consists of both incoming and outgoing logic:
-* Incoming adapters include API controllers, MQ consumers, etc
-* Outgoing adapters include database integrations, MQ producers, or HTTP clients for external APIs
+
+- Incoming adapters include API controllers, MQ consumers, etc
+- Outgoing adapters include database integrations, MQ producers, or HTTP clients for external APIs
 
 The adapter layer typically implements ports defined in the domain layer. These ports are then used in the use cases.
 Adapter modules also include any necessary configuration for initializing their dependencies, e.g, the database adapter includes connection settings such as database name, user, and password.
@@ -57,9 +58,10 @@ Adapter modules also include any necessary configuration for initializing their 
 ### Domain layer
 
 Domain layer consists of 3 three main parts:
-* Models - usually simple POJOs (or equivalent) that represent domain objects
-* Ports - interfaces that are implemented by the adapter layer
-* Use cases - the application's core business logic
+
+- Models - usually simple POJOs (or equivalent) that represent domain objects
+- Ports - interfaces that are implemented by the adapter layer
+- Use cases - the application's core business logic
 
 Domain layer should always aim to be independent of external dependencies. Tools like [ArchUnit](https://www.archunit.org/) can help enforce this in Java projects, so you can setup tests to validate your Java applications architecture.
 
