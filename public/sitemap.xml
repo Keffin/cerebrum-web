@@ -2,16 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/tags/go60/</loc>
+    <lastmod>2026-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2026-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/moergo/</loc>
+    <lastmod>2026-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/split-keeb/</loc>
+    <lastmod>2026-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2026-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/split-keyboards/</loc>
+    <lastmod>2026-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2026-08-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/dataclass/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/tags/mf-doom/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/python/</loc>
@@ -21,9 +36,6 @@
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/records/</loc>
-    <lastmod>2026-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2026-03-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/notes/note_tmux/</loc>

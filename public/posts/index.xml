@@ -6,8 +6,15 @@
     <description>Recent content in Posts on A bit of Kev</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 05 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My split keyboard setup</title>
+      <link>http://localhost:1313/posts/split-keeb/</link>
+      <pubDate>Wed, 05 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/split-keeb/</guid>
+      <description>My Go60 split keyboard setup.</description>
+    </item>
     <item>
       <title>Python tricks with MF DOOM</title>
       <link>http://localhost:1313/posts/dataclasses/</link>
